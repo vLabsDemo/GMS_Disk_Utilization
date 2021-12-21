@@ -1,26 +1,12 @@
 <#
 .SYNOPSIS
 
-    File Name:      HPE-GMS_Service-Restart.ps1
-    Description:    Service Restart
+    File Name:      HPE-GMS_Utilities_Disk_Utilization_Check_Cleaup.ps1
+    Description:    Disk Utilization
     Script Owner:   ITOM Team, Tools Engineering
     Created By :    Anirudha Bagchi
     Version:        V.1.0
-    Created Date:   30/07/2020
-    Updated Date:   08/10/2020
-
-    Requires powershell -Version 3.0
-#>
-
-<#
-.SYNOPSIS
-
-    File Name:      HPE-GMS_Service-Restart.ps1
-    Description:    Service Restart
-    Script Owner:   ITOM Team, Tools Engineering
-    Created By :    Anirudha Bagchi
-    Version:        V.1.0
-    Created Date:   30/07/2020
+    Created Date:   21/12/2021
     Updated Date:   08/10/2020
 
     Requires powershell -Version 3.0
