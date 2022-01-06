@@ -1,51 +1,12 @@
-<#
-.SYNOPSIS
-
-    File Name:      HPE-GMS_Utilities_Disk_Utilization_Check_Cleaup.ps1
-    Description:    Disk Utilization
-    Script Owner:   ITOM Team, Tools Engineering
-    Created By :    Anirudha Bagchi
-    Version:        V.1.0
-    Created Date:   21/12/2021
-    Updated Date:   08/10/2020
-
-    Requires powershell -Version 3.0
-#>
-
-[cmdletbinding()]
-Param
-(
-    [Parameter()]
-    [String]$ServerName=$env:SNC_TargetHostName,
-
-    [Parameter()]
-    [String]$DriveVal=$env:SNC_DriveName,
-
-    [Parameter()]
-    [String]$DiskThreshold=$env:SNC_DiskThreshold
-)
-
-$ErrorActionPreference = "SilentlyContinue";
-    
-$ScriptPath = Split-Path $MyInvocation.MyCommand.Path;
-$ScriptFile_Name = $script:MyInvocation.MyCommand.Name;
-$ScriptFile_FullName = $script:MyInvocation.MyCommand.Path;
-    
-$FileName_WithoutExtension = [io.path]::GetFileNameWithoutExtension($ScriptFile_FullName);
-$function_file = $ScriptPath + "\" + "HPE-AMS_GeneralFunction.ps1";
-
-. "$PSScriptRoot\HPE-AMS_GeneralFunction.ps1";
-
-timestamp
-
-$conn_type = "WMI";
-
 $WNOutput = "";
 $Action = "";
 
+$DriveVal = "C:";
+$DiskThreshold = "90";
+
 Try
 {
-    $WNOutput += "Checking Pre Disk Utilization for $DriveVal Drive on $env:computername`n";
+    $WNOutput += "Checking Pre Disk Utilization for $DriveId Drive on $env:computername`n";
 
     Try
     {
@@ -240,7 +201,7 @@ Try
             $WNOutput += "FAILED: Some Unexpected Error Has Occoured while Fetching Files at C:\Windows\SoftwareDistribution`nERROR: $($_)`n";
         }
 
-        $WNOutput += "Checking Post Disk Utilization for $DriveVal Drive on $env:computername`n";
+        $WNOutput += "Checking Post Disk Utilization for $DriveId Drive on $env:computername`n";
 
         Try
         {
@@ -310,7 +271,30 @@ $Obj_Output += New-Object psobject -Property @{
     Action = "$Action"
 }
 
+$($Obj_Output | ConvertTo-Json)|Out-File -FilePath .\JsonOutput.txt
+
+
 $Json_Output = $($Obj_Output|ConvertTo-Json);
 
 output-format $FileName_WithoutExtension $global:time $ServerName $conn_type $Json_Output $overall_status
-$global:jsonRequest|Out-File -FilePath .\JsonOutput.txt
+$global:jsonRequest
+
+#$obj | Add-Member -MemberType NoteProperty -Name WorkNoteValue -Value $WNOutput
+#$obj | Add-Member -MemberType NoteProperty -Name Action -Value $Action
+#$obj | ConvertTo-Json
+#$UserProfiles = Get-ChildItem -Path C:\Users\ -Directory -Exclude Public|Select-Object -ExpandProperty FullName -ErrorAction SilentlyContinue;
+#$UserProfiles = Get-WmiObject -ClassName Win32_UserProfile |?{$_.LocalPath -like "C:\Users*"}|Select-Object -ExpandProperty LocalPath -ErrorAction SilentlyContinue;
+#
+#foreach($UserProfile in $UserProfiles)
+#{
+#    Write-Output "Looking For Temp Files for " +$UserProfile;
+#    
+#    Try
+#    {
+#        Get-ChildItem "$UserProfile\AppData\Local\Temp\" -Recurse -ErrorAction SilentlyContinue    
+#    }
+#    Catch [System.Exception]
+#    {
+#
+#    }
+#}
