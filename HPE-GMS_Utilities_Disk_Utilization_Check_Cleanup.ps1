@@ -313,4 +313,4 @@ $Obj_Output += New-Object psobject -Property @{
 $Json_Output = $($Obj_Output|ConvertTo-Json);
 
 output-format $FileName_WithoutExtension $global:time $ServerName $conn_type $Json_Output $overall_status
-$global:jsonRequest|Out-File -FilePath .\JsonOutput.txt
+$global:jsonRequest
