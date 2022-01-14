@@ -235,13 +235,13 @@ Try
             {
                 if($ErrCleanup.Count -gt 0)
                 {
-                    $cleanup_status = "Success";
-                    $WNOutput += $CleanupData;
+                    $cleanup_status = "Failure";
+                    $WNOutput += "$ErrCleanup`n";
                 }
                 Else
                 {
-                    $cleanup_status = "Failure";
-                    $WNOutput += "$ErrCleanup`n";
+                    $cleanup_status = "Success";
+                    $WNOutput += $CleanupData;
                 }
             }
         }
