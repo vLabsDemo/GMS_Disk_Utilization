@@ -1,0 +1,28 @@
+Nagios
+
+Type: 
+Disk Usage on C:/
+
+Desc:
+WARNING: Used disk space was 80.30 % (Used: 1644.96 GiB, Free: 402.54 GiB, Total: 2047.50 GiB) on SALMESPRD06 Disk Usage on E:/ is WARNING
+
+/oracle/SBP/oraarch Disk Usage
+Disk Usage on /proc/fs/nfsd
+
+
+Solarwinds:
+
+Type:
+Disk Space Issue
+
+Desc:
+Critical Disk Space Alert NWD2CMCBSS01 10.64.96.171 For disk: NWD2CMCBSS01-D:\\ Label:LOGS 84333BC3 current available space is 15 %
+
+
+
+
+
+workflow.variables.u_alertno
+workflow.variables.u_targetserver
+workflow.variables.u_drive
+workflow.variables.u_threshold
