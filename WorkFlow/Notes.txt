@@ -1,0 +1,25 @@
+        workflow.scratchpad.ciclass = 
+        workflow.scratchpad.IPaddress = 
+        workflow.scratchpad.ci_name = 
+        workflow.scratchpad.assignment_group =
+
+	workflow.scratchpad.TargetServerType = "windows";
+
+workflow.scratchpad.incident
+
+	workflow.scratchpad.driveName
+	workflow.scratchpad.workNotes
+
+	DriveCheckWF
+
+	workflow.scratchpad.ci_info
+
+
+
+workflow.scratchpad.ScriptResult = executionstatus;
+workflow.scratchpad.workNotes = message;
+workflow.scratchpad.action = actiontaken;
+
+6c2984acdb5f24d0848daa4dd3961952
+
+HPE-GMS_Disk_Cleanup_Runbook
